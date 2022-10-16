@@ -20,6 +20,12 @@ namespace TestSHauss.Service
 				return "Wrong Password!";
 			}
 
+			if (AuthenticationService.IsAuthentified(user))
+			{
+				user = null;
+				return "User already logged in";
+			}
+
 			return "Logged in";
 		}
 

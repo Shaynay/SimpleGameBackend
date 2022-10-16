@@ -34,7 +34,6 @@ namespace HttpListenerExample
 
 		public static async Task HandleIncomingConnections()
 		{
-			;
 			// While a user hasn't visited the `shutdown` url, keep on handling requests
 			while (runServer)
 			{
