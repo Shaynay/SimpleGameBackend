@@ -54,7 +54,7 @@
 			public static List<User> LoadByIds(List<string> usersIds)
 			{
 				List<User> loadedUsers = new List<User>();
-				foreach(string userId in usersIds)
+				foreach (string userId in usersIds)
 				{
 					if (allUsers.TryGetValue(userId, out User foundUser))
 					{

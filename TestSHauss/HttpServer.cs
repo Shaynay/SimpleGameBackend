@@ -11,21 +11,21 @@ using TestSHauss.Service;
 namespace HttpListenerExample
 {
 	class HttpServer
-    {
-        public static HttpListener listener;
-        public static string url = "http://localhost:8000/";
-        public static int pageViews = 0;
-        public static int requestCount = 0;
+	{
+		public static HttpListener listener;
+		public static string url = "http://localhost:8000/";
+		public static int pageViews = 0;
+		public static int requestCount = 0;
 		public static string feedbackString = string.Empty;
-        public static string pageData = File.ReadAllText("index.html");
-        private const string displayHtmlString = "inline-block";
-        private const string hideHtmlString = "none";
-		private const string TOKEN_REPLACEMENT_STRING = "%AUTH_TOKEN%";	
+		public static string pageData = File.ReadAllText("index.html");
+		private const string displayHtmlString = "inline-block";
+		private const string hideHtmlString = "none";
+		private const string TOKEN_REPLACEMENT_STRING = "%AUTH_TOKEN%";
 		private const string AUTHENTIFIED_REPLACEMENT_STRING = "%AUTHENTIFIED_DISPLAY%";
 		private const string USER_REPLACEMENT_STRING = "%USER_INFO%";
 		private const string SHOP_REPLACEMENT_STRING = "%ITEMS_SHOP_LIST%";
 		private const string SEARCH_RESULT_REPLACEMENT_STRING = "%SEARCH_RESULT%";
-		
+
 		private static bool displaySearchResult = false;
 		private static string searchResultHtmlString = "";
 
@@ -128,31 +128,31 @@ namespace HttpListenerExample
 			Console.WriteLine();
 		}
 
-        private static bool CheckRequestValidityForAction(HttpListenerRequest req)
+		private static bool CheckRequestValidityForAction(HttpListenerRequest req)
 		{
-            // Only Allow POST and form data
-            if (req.HttpMethod != HttpMethod.Post.Method || req.ContentType == null || req.ContentType != "application/x-www-form-urlencoded")
-            {
-                return false;
-            }
+			// Only Allow POST and form data
+			if (req.HttpMethod != HttpMethod.Post.Method || req.ContentType == null || req.ContentType != "application/x-www-form-urlencoded")
+			{
+				return false;
+			}
 
-            return true;
-        }
+			return true;
+		}
 
 		public static void Main(string[] args)
-        {
-            // Create a Http server and start listening for incoming connections
-            listener = new HttpListener();
-            listener.Prefixes.Add(url);
-            listener.Start();
-            Console.WriteLine("Listening for connections on {0}", url);
+		{
+			// Create a Http server and start listening for incoming connections
+			listener = new HttpListener();
+			listener.Prefixes.Add(url);
+			listener.Start();
+			Console.WriteLine("Listening for connections on {0}", url);
 
-            // Handle requests
-            Task listenTask = HandleIncomingConnections();
-            listenTask.GetAwaiter().GetResult();
+			// Handle requests
+			Task listenTask = HandleIncomingConnections();
+			listenTask.GetAwaiter().GetResult();
 
-            // Close the listener
-            listener.Close();
-        }
-    }
+			// Close the listener
+			listener.Close();
+		}
+	}
 }

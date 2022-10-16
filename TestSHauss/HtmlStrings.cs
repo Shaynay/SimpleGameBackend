@@ -46,7 +46,7 @@ namespace TestSHauss.Controller
 			// Invites
 			sb.Append("<h2>Invites</h2>").AppendLine()
 				.Append("<ul>").AppendLine();
-			foreach(User invitingUser in invitingUsers)
+			foreach (User invitingUser in invitingUsers)
 			{
 				sb.Append("<li>")
 					.Append(invitingUser.nickname)

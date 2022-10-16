@@ -28,7 +28,7 @@ namespace TestSHauss.Service
 			}
 
 			invites.Remove(invitingUserId);
-			return "Invitation declined"; 
+			return "Invitation declined";
 		}
 
 		public static string SendInvitation(User authentifiedUser, string otherUserId)

@@ -22,9 +22,9 @@ namespace TestSHauss.Controller
 				return string.Empty;
 			}
 
-			using(Stream body = request.InputStream)
+			using (Stream body = request.InputStream)
 			{
-				using(StreamReader reader = new StreamReader(body, request.ContentEncoding))
+				using (StreamReader reader = new StreamReader(body, request.ContentEncoding))
 				{
 					return reader.ReadToEnd();
 				}
