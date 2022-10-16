@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Basic Game Server</title>
+	</head>
+	<body>
+		<div style="display: flex;">
+			<p style="margin-right: 30px;">Page Views: {0}</p>
+			<p style="font-weight:bold; color:darkred">Feedback: {1}</p>
+		</div>
+		<div style="display: flex;">
+			<form method="post" action="shutdown">
+				<input type="submit" value="Shutdown" {2} />
+			</form>
+			<form method="post" action="logout">
+				<input type="submit" value="Logout"/>
+				<input type="hidden" name="authToken" value="%AUTH_TOKEN%" />
+			</form>
+		</div>
+		<div style="display: {3};">
+			<form method="post" action="login-or-create">
+				<label>login<input type="text" name="login" placeholder="tester" /></label>
+				<label>password<input type="password" name="password" placeholder="tester" /></label>
+				<input type="submit" value="Login" />
+			</form>
+		</div>
+		<div style="display: flex;">
+			<div style="display: %AUTHENTIFIED_DISPLAY%;">
+				%USER_INFO%
+				<h2>Search user</h2>
+				<form method="post" action="search-user">
+					<input type="text" name="nickname" placeholder="nickname"/>
+					<input type="submit" value="Search"/>
+					<input type="hidden" name="authToken" value="%AUTH_TOKEN%"/>
+				</form>
+				%SEARCH_RESULT%
+			</div>
+			<div style="display: %AUTHENTIFIED_DISPLAY%;">
+				<div style="margin-left: 100px;">
+					<h1>Shop</h1>
+					<h2>Items</h2>
+					<ul>
+						%ITEMS_SHOP_LIST%
+					</ul>
+					<form method="post" action="buy">
+						<input type="text" name="itemId" placeholder="item ID (ex: 12345)"/>
+						<input type="submit" value="Buy"/>
+						<input type="hidden" name="authToken" value="%AUTH_TOKEN%"/>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
